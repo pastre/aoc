@@ -15,4 +15,21 @@ Describe 'problem one'
         When call problem_one
         The output should equal '1 2 3'
     End
+
+    It 'flags unsafe increasing distances'
+        When call has_safe_distances 1 2 7 8 9
+        The output should equal 'unsafe'
+    End
+    It 'flags unsafe decreasing distances'
+        When call has_safe_distances 9 7 6 2 1
+        The output should equal 'unsafe'
+    End
+    It 'calculates increasing distances'
+        When call has_safe_distances 1 3 6 7 9
+        The output should equal 'safe'
+    End
+    It 'calculates decreasing distances'
+        When call has_safe_distances 7 6 4 2 1
+        The output should equal 'safe'
+    End
 End
