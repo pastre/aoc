@@ -23,10 +23,10 @@ Describe 'problem_one.sh'
        	End
        	It 'breaks lists into files'
        		When call write_list 1 2 3 4
-       		The contents of file '.tmp/1' should equal '1'
-       		The contents of file '.tmp/2' should equal '2'
-       		The contents of file '.tmp/3' should equal '3'
-       		The contents of file '.tmp/4' should equal '4'
+       		The contents of file '.tmp/problem_one/1' should equal '1'
+       		The contents of file '.tmp/problem_one/2' should equal '2'
+       		The contents of file '.tmp/problem_one/3' should equal '3'
+       		The contents of file '.tmp/problem_one/4' should equal '4'
        	End
 		It 'calculates distance'
 			When call dist 13 5

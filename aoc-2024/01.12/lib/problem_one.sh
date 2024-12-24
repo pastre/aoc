@@ -18,13 +18,12 @@ add() {
 write_list() {
 	input="$1"
 	for (( i=1; i <= "$#"; i++ )); do
-	    echo "${!i}" >> .tmp/${i}
+	    echo "${!i}" >> .tmp/problem_one/${i}
 	done
 }
 
 problem_one() {
-	rm .tmp/* 2>/dev/null || mkdir -p .tmp || true
-
+	rm .tmp/problem_one/* 2>/dev/null || mkdir -p .tmp/problem_one || true
 	left_col=$(echo $1 | sed 's/,/ /g')
 	right_col=$(echo $2 | sed 's/,/ /g')
 	if [[ -z $left_col || -z $right_col ]]; then 
@@ -40,7 +39,7 @@ problem_one() {
 	write_list $right_list
 	
 	sum=0
-	for pair in .tmp/*; do
+	for pair in .tmp/problem_one/*; do
 		distance_args=$(cat $pair | tr '\n' ' ')
 		distance=$(dist $distance_args)
 		sum=$(add sum distance)	
