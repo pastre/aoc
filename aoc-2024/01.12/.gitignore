@@ -1,3 +1,4 @@
 *.swp
+input
 .shellspec-quick.log
 .tmp/
