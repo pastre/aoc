@@ -49,4 +49,21 @@ problem_one() {
 	echo  $sum
 }
 
+${__SOURCED__:+return}
+echo started
+left_col=""
+right_col=""
+echo reading
+while read line; do
+	left_number=$(echo $line | sed 's/ .*//g')
+	right_number=$(echo $line | sed 's/.* //g')
+	left_col+="$left_number," 
+	right_col+="$right_number," 
+done < input
+echo 'read'
+problem_one $left_col $right_col
+
+echo
+
+
 
