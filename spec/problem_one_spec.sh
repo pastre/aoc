@@ -16,5 +16,9 @@ Describe 'problem_one.sh'
 		When call problem_one 2 3
 		The output should equal 5
 	End
+	It 'sorts'
+		When call sort_list 3,2,4,1
+		The output should equal 1,2,3,4
+	End
 End
 

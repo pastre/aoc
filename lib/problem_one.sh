@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sort_list() {
+	sorted=$(echo $1 | tr , '\n' | sort -i -g | tr '\n' ,)
+	echo ${sorted%?}
+}
+
 add() {
 	result=$(( $1 + $2 ))
 	echo $result
