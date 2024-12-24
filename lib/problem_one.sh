@@ -5,6 +5,11 @@ sort_list() {
 	echo ${sorted%?}
 }
 
+dist() {
+	distance=$(( $1 - $2 ))
+	echo "$distance" | sed 's/-//'
+}
+
 add() {
 	result=$(( $1 + $2 ))
 	echo $result

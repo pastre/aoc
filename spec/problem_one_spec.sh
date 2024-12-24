@@ -13,12 +13,20 @@ Describe 'problem_one.sh'
 		End
 	End
 	It 'sums two integers'
-		When call problem_one 2 3
+		When call add 2 3
 		The output should equal 5
 	End
 	It 'sorts'
 		When call sort_list 3,2,4,1
 		The output should equal 1,2,3,4
+	End
+	It 'calculates distance'
+		When call dist 13 5
+		The output should equal 8 
+	End
+	It 'handles negative distances'
+		When call dist 5 13
+		The output should equal 8
 	End
 End
 
