@@ -22,6 +22,10 @@ mul(1,2)
 mul(3,4)
 mul(333,444)'
     End
+    It 'returns zero with missing arg'
+        When call mul 3
+        The output should equal 0
+    End
     It 'multiplies numbers'
         When call mul 3 4
         The output should equal 12
@@ -32,5 +36,15 @@ mul(333,444)'
         End
         When call mul_expression <<< 'mul(3,4)'
         The output should equal 12
+    End
+
+    It 'sums and multiplies expressions'
+    Data
+    #|xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))
+    #|
+    #|
+    End
+    When call problem_one
+    The output should equal 161
     End
 End
