@@ -5,6 +5,7 @@ dist() {
 
 has_safe_direction() {
     changes=$(mark_direction_changes $@ | uniq | wc -l | xargs)
+    echo "$changes -> $@" >> changes
     if (( $changes == 1 )); then
         echo 'safe'
     else
@@ -20,7 +21,6 @@ mark_direction_changes() {
     diff=$(( $1 - $2 ))
     if [ $diff -eq 0 ]; then 
         echo 'unsafe'
-        return 0
     elif [ $diff -lt 0 ]; then
         echo 'l'
     elif [ $diff -gt 0 ]; then
@@ -47,8 +47,19 @@ has_safe_distances() {
 }
 
 problem_one() {
+    declare -i sum
+    sum=0
     while read levels; do
-        echo $levels
+        if [ "$(has_safe_direction $levels)" == 'unsafe' ]; then 
+            echo "$levels" >> unsafe_directions
+            continue
+        fi
+        if [ "$(has_safe_distances $levels)" == 'unsafe' ]; then 
+            echo "$levels" >> unsafe_distances
+            continue
+        fi
+        sum=$(( sum + 1 ))
     done
+    echo $sum
 }
 
