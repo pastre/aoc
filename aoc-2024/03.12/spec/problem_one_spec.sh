@@ -3,23 +3,34 @@ Describe 'problem one'
 
     It 'sanitizes input'
         Data
-        #|djsjjehsbdhamax(3,4)
+        #|djsjjehsbdhamul(3,4)
         #|821i39mAx(3,4)
         #|mAxMaxmaX( 3,4)
-        #|max3,4)
-        #|max(3 4)
-        #|max(3333,4)
-        #|max(1,2)max(3,4)
-        #|max(3,4444)
-        #|max(3,)
-        #|max(,4)
-        #|max(,4)
-        #|max(333,444)
+        #|mul3,4)
+        #|mul(3 4)
+        #|mul(3333,4)
+        #|mul(1,2)mul(3,4)
+        #|mul(3,4444)
+        #|mul(3,)
+        #|mul(,4)
+        #|mul(,4)
+        #|mul(333,444)
         End
         When call sanitize
-        The output should equal 'max(3,4)
-max(1,2)
-max(3,4)
-max(333,444)'
+        The output should equal 'mul(3,4)
+mul(1,2)
+mul(3,4)
+mul(333,444)'
+    End
+    It 'multiplies numbers'
+        When call mul 3 4
+        The output should equal 12
+    End
+    It 'multiplies expressions'
+        Data
+        #|mul(3,4)
+        End
+        When call mul_expression <<< 'mul(3,4)'
+        The output should equal 12
     End
 End
